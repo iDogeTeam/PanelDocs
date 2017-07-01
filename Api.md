@@ -119,14 +119,14 @@ Shadowsocks 服务需要在`基本地址`的基础上增加`shadowsocks/`
   - `traffic` 流量，按字节计算，`bigint`
   - `method` 加密方式，`string`
   - `enable` 是否启用，`boolean`
-  
+
 **更新失败返回数据格式如下：**
 _注意，此处状态码为400_
 ```
 {
     "status": 400,
     "timestamp": 1492507393,
-    "updated_users": [
+    "service_ids": [
         1001,
         1004,
         ...
@@ -135,7 +135,7 @@ _注意，此处状态码为400_
 ```
 - `status` 状态码
 - `timestamp` Unix单位制，当前时间，`int`
-- `updated_users` 一个数组，包含更新成功的用户`服务序列号`
+- `services_ids` 一个数组，包含更新失败的用户`服务序列号`
 
 ### 错误反馈
 
@@ -204,7 +204,7 @@ _注意，此处状态码为400_
   - `log` 向`error`返回日志
     - `{number}` 返回的日志数,**必填**，`int`  
     例子：`log 300` 返回最近的300条日志  
-    
+
 
 **如果Command包含了无法解读的命令则记录进错误日志(等级`Error`)并尝试提交**
 
